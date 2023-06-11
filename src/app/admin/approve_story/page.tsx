@@ -1,7 +1,6 @@
 import React from 'react';
 import { Stories } from '@prisma/client';
 
-import Header from '@/components/Header';
 import ApproveStoryItem from '@/components/UI/ApproveStoryItem';
 import Link from 'next/link';
 import getUnapprovedStories from '@/libs/getUnapprovedStories';
@@ -9,7 +8,10 @@ import PageInnerWrapper from '@/components/PageInnerWrapper';
 
 const ApproveStoryPage = async () => {
   const storiesData: Promise<Stories[]> = getUnapprovedStories();
-  const stories = await storiesData;
+
+  if (!storiesData) return;
+
+  const stories = (await storiesData) || [];
 
   return (
     <PageInnerWrapper

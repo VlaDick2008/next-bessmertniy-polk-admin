@@ -9,7 +9,10 @@ import PageInnerWrapper from '@/components/PageInnerWrapper';
 
 const AllStoriesPage = async () => {
   const storiesData: Promise<Stories[]> = getAllStories();
-  const stories = await storiesData;
+
+  if (!storiesData) return;
+
+  const stories = (await storiesData) || [];
 
   return (
     <PageInnerWrapper padding headerLabel="Все истории" headerDescription="Список всех историй">
