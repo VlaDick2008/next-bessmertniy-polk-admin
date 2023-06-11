@@ -5,7 +5,7 @@ interface PageInnerWrapperProps {
   children: React.ReactNode;
   headerLabel: string;
   headerDescription: string;
-  padding: boolean;
+  padding?: boolean;
 }
 
 const PageInnerWrapper: React.FC<PageInnerWrapperProps> = ({
