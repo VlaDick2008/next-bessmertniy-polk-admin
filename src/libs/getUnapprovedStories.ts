@@ -1,8 +1,12 @@
 import axios from 'axios';
 
 export default async function getUnapprovedStories() {
-  const res = await axios.get('http://localhost:3000/api/admin/approve_story');
-  if (res.status === 500) throw new Error('Ашибка!!!');
+  let res;
+  try {
+    res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/approve_story`);
+  } catch (err) {
+    return;
+  }
 
   return res.data;
 }
